@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:background="?attr/background"
+    tools:context=".ui.view.tareas.TareasFragment">
+
+
+
+    <!-- <TextView
+         android:layout_width="wrap_content"
+         android:text="Mis tareas"
+         android:layout_gravity="center"
+         android:textSize="18sp"
+         android:textColor="@color/NegroOled"
+         android:layout_height="wrap_content">
+
+     </TextView>-->
+
+    <!--este es el recicler view-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTask"
+        android:background="?attr/background"
+        android:layout_width="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="80dp"
+        android:layout_height="match_parent">
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/BtAddTask"
+        android:contentDescription="añador tarea"
+        android:layout_width="wrap_content"
+        android:backgroundTint="@color/azul"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:tint="?attr/background"
+        android:src="@drawable/ic_plus" />
+
+    <LinearLayout
+        android:id="@+id/LyProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/NegroTransparencia"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+
+        <ProgressBar
+            android:id="@+id/ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/white"
+
+            >
+
+        </ProgressBar>
+
+    </LinearLayout>
+
+
+</FrameLayout>

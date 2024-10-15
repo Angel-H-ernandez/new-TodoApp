@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
+    <color name="NegroOled">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="NegroClaro">#2F2F2F</color>
+    <color name="NegroHint">#6A6A6A</color>
+    <color name="NegroSuperClaro">#A6A6A6</color>
+    <color name="azul">#32b5ff</color>
+    <color name="Negro">#1e1e1e</color>
+    <color name="AmarilloBackground">#fefcf2</color>
+    <color name="NegroTransparencia">#44000000</color>
+    <color name="azul_transparente">#8032B5FF</color>
+    <color name="azul_transparente_10">#1A32B5FF</color>
+    <color name="rojo">#FF2929</color>
+    <color name="rojo_10">#1AFF2929</color>
+
+    <color name="backgroundEditText">#FFF</color>
+    <color name="backgroundEditTextNight">#262626</color>
+
 </resources>

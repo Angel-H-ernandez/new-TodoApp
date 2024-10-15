@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/background"
+    tools:context=".ui.view.login.SignUpActivity">
+
+
+    <LinearLayout
+        android:id="@+id/LyPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="48dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="56dp"
+            android:text="@string/leyend_title_sigup"
+            android:textColor="?attr/TextTitulo"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/EtNameUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:autofillHints="name"
+            android:background="@drawable/edit_text"
+            android:baselineAligned="false"
+            android:drawableTint="?attr/TextTitulo"
+            android:drawableStart="@drawable/ic_user"
+            android:drawablePadding="8dp"
+            android:hint="@string/placeholder_name"
+            android:inputType="text"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/EtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:autofillHints="emailAddress"
+            android:background="@drawable/edit_text"
+            android:baselineAligned="false"
+            android:drawableStart="@drawable/ic_arroba"
+            android:drawablePadding="8dp"
+            android:drawableTint="?attr/TextTitulo"
+            android:hint="@string/placeholder_email"
+            android:inputType="textEmailAddress"
+            android:padding="12dp" />
+
+
+        <EditText
+            android:id="@+id/EtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:autofillHints="password"
+            android:background="@drawable/edit_text"
+            android:baselineAligned="false"
+            android:drawableStart="@drawable/ic_block"
+            android:drawablePadding="8dp"
+            android:drawableTint="?attr/TextTitulo"
+            android:hint="@string/placeholder_passwpord"
+            android:inputType="textPassword"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/EtPasswordConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:autofillHints="password"
+            android:background="@drawable/edit_text"
+            android:baselineAligned="false"
+            android:drawableStart="@drawable/ic_block"
+            android:drawablePadding="8dp"
+            android:drawableTint="?attr/TextTitulo"
+            android:hint="@string/placeholder_password_confirm"
+            android:inputType="textPassword"
+            android:padding="12dp" />
+
+        <!--com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleDrawable="@drawable/ic_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="Ingrese su contraseña"/>
+
+        </com.google.android.material.textfield.TextInputLayout> -->
+
+
+        <Button
+            android:id="@+id/BtSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:padding="12dp"
+            android:baselineAligned="false"
+            app:cornerRadius="8dp"
+            app:backgroundTint="?attr/backgroundButton"
+            android:textColor="@color/AmarilloBackground"
+            android:text="@string/string_button_sigup"
+            android:textSize="20sp">
+
+        </Button>
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LyProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/NegroTransparencia"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/white"
+
+            >
+
+        </ProgressBar>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

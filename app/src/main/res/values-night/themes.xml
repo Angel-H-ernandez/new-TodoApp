@@ -3,5 +3,15 @@
     <style name="Base.Theme.MyTodoApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="background">@color/NegroOled</item>
+        <item name="android:textColor">@color/NegroSuperClaro</item>
+        <item name="backgroundColor">@color/NegroOled</item>
+        <item name="TextTitulo">@color/AmarilloBackground</item>
+        <item name="backgroundButton">@color/NegroClaro</item>
+
+        <item name="backgroundDialog">@color/NegroClaro</item>
+        <item name="backgroundEditText">@color/backgroundEditTextNight</item>
+
+        <item name="colorHintEditText">@color/NegroHint</item>
     </style>
 </resources>

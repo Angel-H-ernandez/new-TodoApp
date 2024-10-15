@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <attr name="backgroundButton" format="color" />
+    <attr name="TextTitulo" format="color" />
+
+    <attr name="backgroundEditText" format="color" />
+    <attr name="backgroundDialog" format="color" />
+
+    <attr name="colorHintEditText" format="color" />
+</resources>

@@ -35,9 +35,23 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures{
+        viewBinding = true
+    }
+
 }
 
 dependencies {
+
+    val navVersion = "2.7.6"
+    val lifecycleVersion = "2.7.0"
+
+    //viewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+
+    //navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-android-compiler:2.48")
@@ -45,6 +59,9 @@ dependencies {
     //retofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //DATSA ESTORE
+    implementation ("androidx.datastore:datastore:1.0.0")
 
     //OKTTO3
     implementation ("com.squareup.okhttp3:logging-interceptor:4.11.0")

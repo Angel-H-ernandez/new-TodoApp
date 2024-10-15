@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">MyTodoApp</string>
+    <string name="app_name">My Todo App</string>
+    <!-- INICIAR SESIONS -->
+    <string name="sing_in">Iniciar sesion en Task</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="placeholder_email">Correo electronico</string>
+    <string name="placeholder_passwpord">Contraseña</string>
+    <string name="string_button_sigin">Iniciar sesion</string>
+    <string name="string_leyend_sigup">¿No tienes cuanta? Registrate</string>
+    <string name="description_imagen">Imagen de usario</string>
+    <string name="leyend_title_sigup">Registrate en task</string>
+    <string name="placeholder_name">Nombre de usuario</string>
+    <string name="placeholder_password_confirm">Confirma tu contraseña</string>
+    <string name="string_button_sigup">Registrate</string>
+    <string name="string_menu_agenda">Agenda</string>
+    <string name="string_menu_tareas">Tareas</string>
+    <string name="string_menu_yo">Resumen</string>
+    <string name="titulo_TareasHoy">Mis tareas de hoy</string>
+    <string name="string_btn_cancelar">Cancelar</string>
+    <string name="string_btn_Añadir">Añadir</string>
 </resources>

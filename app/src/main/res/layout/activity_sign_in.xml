@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/background"
+    tools:context=".ui.view.login.SignInActivity">
+
+    <LinearLayout
+        android:id="@+id/LyPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="48dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="56dp"
+            android:text="@string/sing_in"
+            android:textColor="?attr/TextTitulo"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/IvLogo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/description_imagen"
+            app:tint="?android:attr/textColor"
+            android:src="@drawable/user_12756012"
+            app:layout_constraintEnd_toEndOf="@id/LyPrincipal"
+            app:layout_constraintStart_toStartOf="@+id/LyPrincipal"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+
+        </ImageView>
+
+
+        <EditText
+            android:id="@+id/EtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:autofillHints="emailAddress"
+            android:background="@drawable/edit_text"
+            android:baselineAligned="false"
+            android:drawableStart="@drawable/ic_arroba"
+            android:drawablePadding="8dp"
+            android:drawableTint="?attr/TextTitulo"
+            android:hint="@string/placeholder_email"
+            android:inputType="textEmailAddress"
+            android:padding="12dp" />
+
+
+
+
+        <EditText
+            android:id="@+id/EtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:autofillHints="password"
+            android:background="@drawable/edit_text"
+            android:baselineAligned="false"
+            android:drawableStart="@drawable/ic_block"
+            android:drawablePadding="8dp"
+            android:drawableTint="?attr/TextTitulo"
+            android:hint="contraseña"
+            android:inputType="textPassword"
+            android:padding="12dp" />
+
+
+
+        <Button
+            android:id="@+id/BtSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:cornerRadius="8dp"
+            android:textColor="@color/AmarilloBackground"
+            android:padding="13dp"
+            app:backgroundTint="?attr/backgroundButton"
+            android:baselineAligned="false"
+            android:text="@string/string_button_sigin"
+            android:textSize="20sp">
+
+        </Button>
+
+        <TextView
+            android:id="@+id/TvSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:text="@string/string_leyend_sigup"
+            android:textColor="@color/azul"
+            android:textStyle="bold">
+
+        </TextView>
+
+
+        <!--<androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btApple"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/button_black_redonded"
+            android:paddingVertical="8dp"
+            android:src="@drawable/ic_apple"
+            android:tint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/IvLogo">
+
+
+        </androidx.appcompat.widget.AppCompatImageButton>
+
+        <ImageButton
+
+            android:id="@+id/btGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/button_black_redonded"
+            android:paddingVertical="8dp"
+            android:src="@drawable/ic_google"
+            app:cornerRadius="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btApple">
+
+        </ImageButton>-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LyProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/NegroTransparencia"
+        android:orientation="vertical"
+
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/white"
+
+            >
+
+        </ProgressBar>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

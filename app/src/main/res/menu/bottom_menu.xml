@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-  
+    <item
+        android:id="@+id/tareasFragment"
+        android:icon="@drawable/ic_tareas"
+        android:title="@string/string_menu_tareas">
+
+    </item>
+
+    <item
+        android:id="@+id/agendaFragment"
+        android:icon="@drawable/ic_agenda"
+        android:title="@string/string_menu_agenda">
+
+    </item>
+
+    <item
+        android:id="@+id/yoFragment"
+        android:icon="@drawable/ic_user"
+        android:title="@string/string_menu_yo">
+
+    </item>
+
 </menu>

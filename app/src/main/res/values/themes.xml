@@ -2,7 +2,19 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MyTodoApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/NegroOled</item>
+
+        <item name="background">@color/AmarilloBackground</item>
+        <item name="android:textColor">@color/NegroOled</item>
+        <item name="backgroundColor">@color/AmarilloBackground</item>
+        <item name="TextTitulo">@color/NegroOled</item>
+        <item name="backgroundButton">@color/NegroOled</item>
+        <item name="backgroundDialog">@color/AmarilloBackground</item>
+        <item name="backgroundEditText">@color/backgroundEditText</item>
+
+        <item name="colorHintEditText">@color/NegroTransparencia</item>
+
+
     </style>
 
     <style name="Theme.MyTodoApp" parent="Base.Theme.MyTodoApp" />
