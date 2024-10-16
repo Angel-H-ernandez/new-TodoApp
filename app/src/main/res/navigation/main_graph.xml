@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_tareas" />
     <fragment
         android:id="@+id/yoFragment"
-        android:name="com.AngelHernandez.mytodoapp.ui.view.agencia.AgendaFragment"
+        android:name="com.AngelHernandez.mytodoapp.ui.view.yo.YoFragment"
         android:label="fragment_yo"
         tools:layout="@layout/fragment_yo"/>
 </navigation>

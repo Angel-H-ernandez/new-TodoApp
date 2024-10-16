@@ -1,5 +1,6 @@
 package com.AngelHernandez.mytodoapp.ui.view.login
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -8,12 +9,15 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.datastore.core.DataStore
+import androidx.lifecycle.lifecycleScope
 import com.AngelHernandez.mytodoapp.R
 import com.AngelHernandez.mytodoapp.databinding.ActivitySignInBinding
 import com.AngelHernandez.mytodoapp.ui.view.dependencias.PreferencesManager
 import com.AngelHernandez.mytodoapp.ui.view.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 import java.util.prefs.Preferences
@@ -37,7 +41,7 @@ class SignInActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val user = preferencesManager.getId()
-        if(user != null) goToHome()
+        if(user != null) goToHome() //verificar si ya estsa logueado
 
         initListeners()
         initObservers() // Inicializar los observadores para LiveData
@@ -69,6 +73,7 @@ class SignInActivity : AppCompatActivity() {
                 val user = result.getOrNull()
                 Log.i("INFO", "Login successful: $user")
                 Log.i("INFO", user!!.id.toString())
+                Log.e("INFO in", user.toString())
                 preferencesManager.saveId(user!!.id.toString())
                 goToHome()
 
@@ -81,6 +86,19 @@ class SignInActivity : AppCompatActivity() {
                 Toast.makeText(this, "Login failed: ${exception?.message}", Toast.LENGTH_LONG).show()
             }
         }
+
+
+        singInViewModel.dialogEvent.observe(this) { event ->
+            event?.let { (title, message) ->
+                AlertDialog.Builder(this)
+                    .setTitle(title)
+                    .setMessage(message)
+                    .setPositiveButton("Aceptar") { dialog, _ -> dialog.dismiss() }
+                    .show()
+                singInViewModel.dialogShown()
+            }
+        }
+
 
     }
 

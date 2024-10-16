@@ -2,6 +2,7 @@ package com.AngelHernandez.mytodoapp.ui.view.tareas
 
 
 
+import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
@@ -20,6 +21,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.AngelHernandez.mytodoapp.R
 import com.AngelHernandez.mytodoapp.databinding.FragmentTareasBinding
+import com.AngelHernandez.mytodoapp.ui.view.dependencias.Dialogs
 import com.AngelHernandez.mytodoapp.ui.view.tareas.adapter.TaskAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -129,6 +131,22 @@ class TareasFragment : Fragment() {
 
             }
         }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            tareasViewModel.dialogEvent.collect { event ->
+                event?.let { (title, message) ->
+                    AlertDialog.Builder(requireContext())
+                        .setTitle(title)
+                        .setMessage(message)
+                        .setPositiveButton("Aceptar") { dialog, _ -> dialog.dismiss() }
+                        .show()
+                    tareasViewModel.dialogShown()
+                }
+            }
+        }
+
+
+
     }
 
     /*private fun initTask() {

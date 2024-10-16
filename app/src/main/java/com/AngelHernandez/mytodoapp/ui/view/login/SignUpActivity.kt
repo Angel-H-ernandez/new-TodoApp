@@ -1,5 +1,6 @@
 package com.AngelHernandez.mytodoapp.ui.view.login
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -72,6 +73,20 @@ class SignUpActivity : AppCompatActivity() {
                     .show()
                 marcarErrorCampos()
             }
+        }
+
+        singUpViewModel.dialogEvent.observe(this) { event ->
+            event?.let { (title, message) ->
+                AlertDialog.Builder(this)
+                    .setTitle(title)
+                    .setMessage(message)
+                    .setPositiveButton("Aceptar") { dialog, _ -> dialog.dismiss() }
+                    .show()
+                singUpViewModel.dialogShown()
+
+
+            }
+           //
         }
 
     }

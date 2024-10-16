@@ -8,7 +8,10 @@ import androidx.lifecycle.viewModelScope
 import com.AngelHernandez.mytodoapp.data.model.UserModel
 import com.AngelHernandez.mytodoapp.domain.SignInUseCase
 import com.AngelHernandez.mytodoapp.ui.view.dependencias.Validator
+import com.AngelHernandez.mytodoapp.ui.view.tareas.DialogEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,18 +28,21 @@ class SignInViewModel @Inject constructor(private val signInUseCase: SignInUseCa
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> get() = _isLoading
 
+    private val _dialogEvent = MutableLiveData<DialogEvent?>(null)
+    val dialogEvent: LiveData<DialogEvent?> = _dialogEvent
+
 
 
 
     fun signIn(email: String, password: String) {
+        if (!validator.isEmail(email)) {
+            _dialogEvent.value = DialogEvent("Error", "Ingrese datos validos")
+            return
+        }
         viewModelScope.launch {
             _isLoading.value = true // Indica que se está procesando la solicitud
 
-            if (!validator.isEmail(email)) {
-                _isLoading.value = false
-                _signInResult.value = Result.failure(Exception("Invalid email format")) // Comunica el error a la vista
-                return@launch // Termina la función si la validación falla
-            }
+
             try {
                 val result = signInUseCase(email, password) // Llama al caso de uso
                 _signInResult.value = result // Actualiza el resultado del inicio de sesión
@@ -55,6 +61,10 @@ class SignInViewModel @Inject constructor(private val signInUseCase: SignInUseCa
                 _isLoading.value = false // Indica que la solicitud ha terminado
             }
         }
+    }
+
+    fun dialogShown() {
+        _dialogEvent.value = null
     }
 
 

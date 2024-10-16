@@ -2,7 +2,10 @@ package com.AngelHernandez.mytodoapp.ui.view.tareas
 
 
 
+import android.app.AlertDialog
 import android.util.Log
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,6 +35,9 @@ class TareasViewModel @Inject constructor(private val getTaskFromWorkSpace: GetT
     private val _isLoading = MutableStateFlow<Boolean>(false)
     val isLoading: StateFlow<Boolean> get() = _isLoading
 
+    private val _dialogEvent = MutableStateFlow<DialogEvent?>(null)
+    val dialogEvent: StateFlow<DialogEvent?> = _dialogEvent
+
     init { //este metodo se llama acutomasticamente al llamar al viewmodel, como un oncreate de una vista
         Log.d("INFO", "hola")
         viewModelScope.launch{ //corrutina
@@ -51,9 +57,16 @@ class TareasViewModel @Inject constructor(private val getTaskFromWorkSpace: GetT
     }
 
     fun addTask(nombre: String){
+        if (nombre.isEmpty()) {
+            _dialogEvent.value = DialogEvent("Advertencia", "El nombre de la tarea no puede estar vacío")
+            return
+        }
         viewModelScope.launch{
+
             _isLoading.value = true
+
             try {
+
                 val result = addTaskUseCase(nombre)
                 // _taskResult.value = result.getOrNull()!!
                 Log.i("INFO vieemodel", _taskResult.value.toString())
@@ -109,5 +122,12 @@ class TareasViewModel @Inject constructor(private val getTaskFromWorkSpace: GetT
         }
     }
 
+    fun dialogShown() {
+        _dialogEvent.value = null
+    }
+
+
+
 
 }
+data class DialogEvent(val title: String, val message: String)

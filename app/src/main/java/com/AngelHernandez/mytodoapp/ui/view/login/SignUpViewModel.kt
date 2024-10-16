@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.AngelHernandez.mytodoapp.data.model.UserModel
 import com.AngelHernandez.mytodoapp.domain.SignUpUseCase
 import com.AngelHernandez.mytodoapp.ui.view.dependencias.Validator
+import com.AngelHernandez.mytodoapp.ui.view.tareas.DialogEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,13 +25,16 @@ class SignUpViewModel @Inject constructor(val useCase: SignUpUseCase, private va
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> get() = _isLoading
 
+    private val _dialogEvent = MutableLiveData<DialogEvent?>(null)
+    val dialogEvent: LiveData<DialogEvent?> = _dialogEvent
+
     fun signUp(name: String, email: String, password: String, password2: String){
         viewModelScope.launch{
             _isLoading.value = true; //cargando
-            if(!camposValidados(email, name, password, password)){
+            if(!camposValidados(email, name, password, password2)){
                 _isLoading.value = false
-                _signUpResult.value = Result.failure(Exception("LLene adecuadamente los campos")) // Comunica el error a la vista
-                return@launch // Termina la función si la validación falla
+                _dialogEvent.value = DialogEvent("Error", "Ingrese email y contraseñas iguales")
+                return@launch
             }
             try {
                 val newUser= useCase(name, email, password);
@@ -59,8 +63,12 @@ class SignUpViewModel @Inject constructor(val useCase: SignUpUseCase, private va
         if(name.isBlank()) return false
         if(!validator.isEmail(email)) return false
         if(password.isBlank()) return false
-        if(password!= password2) return false
+        if(password != password2) return false
         return true;
 
+    }
+
+    fun dialogShown() {
+        _dialogEvent.value = null
     }
 }
