@@ -84,11 +84,16 @@ class TareasFragment : Fragment() {
 
         dialogo.show()
     }
+    /***
+     * update list task
+     * update add task
+     * update tached class
+     **/
 
     private fun initUi() {
-        initList()
-        initUiState()
-        initProgressBar()
+        initList() //monstrar las tareas
+        initUiState() //obserevador de las tareas
+        initProgressBar() // iniciar la pantalla de carga
 
     }
 

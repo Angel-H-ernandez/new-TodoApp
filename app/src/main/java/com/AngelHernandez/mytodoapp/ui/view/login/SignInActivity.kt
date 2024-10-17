@@ -72,9 +72,11 @@ class SignInActivity : AppCompatActivity() {
                 // Inicio de sesión exitoso
                 val user = result.getOrNull()
                 Log.i("INFO", "Login successful: $user")
-                Log.i("INFO", user!!.id.toString())
+                Log.i("INFO user id", user!!.id.toString())
+                Log.i("INFO user idgrouptask", user.default_grouptask_id.toString())
                 Log.e("INFO in", user.toString())
-                preferencesManager.saveId(user!!.id.toString())
+                preferencesManager.saveId(user.id.toString())
+                preferencesManager.saveIdGroupTaskDefault(user.default_grouptask_id.toString())
                 goToHome()
 
             } else {

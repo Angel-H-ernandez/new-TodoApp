@@ -14,4 +14,14 @@ class PreferencesManager @Inject constructor(private val sharedPreferences: Shar
     fun getId(): String? {
         return sharedPreferences.getString("ID", null)
     }
+
+    fun saveIdGroupTaskDefault(id: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString("IdGroupTaskDefault", id)
+        editor.apply()
+    }
+
+    fun getIdGroupTaskDefault(): String? {
+        return sharedPreferences.getString("IdGroupTaskDefault", null)
+    }
 }

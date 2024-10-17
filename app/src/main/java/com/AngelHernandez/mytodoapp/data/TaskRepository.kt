@@ -29,13 +29,13 @@ class TaskRepository @Inject constructor(private val apiClient: ApiClient) {
         }
     }
 
-    suspend fun addTask(name: String) : Result<List<TaskModel>>{
+    suspend fun addTask(name: String, idGroupTask: Int, idUserMain: Int) : Result<List<TaskModel>>{
         return try {
             val newTask = TaskRequest(
                 title = name,
-                group_task_id = 3,
-                assigned_user_id = 11,
-                created_by_user_id = 11,
+                group_task_id = idGroupTask,
+                assigned_user_id = idUserMain,
+                created_by_user_id = idUserMain,
                 completed = false,
             )
             val task  = apiClient.addTask(newTask)
@@ -54,7 +54,7 @@ class TaskRepository @Inject constructor(private val apiClient: ApiClient) {
         }
     }
 
-    suspend fun completedTask(id: String, task: TaskModel) : Result<List<TaskModel>>{
+    suspend fun  completedTask(id: String, task: TaskModel) : Result<List<TaskModel>>{
         return try{
             val newTask = TaskRequest(
                 title = task.title,

@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class GetTaskFromWorkSpace @Inject constructor(private val repository: TaskRepository) {
 
-    suspend operator fun invoke(id: Int, status: Boolean) : Result<List<TaskModel>>{
+    suspend operator fun invoke(id: String, status: Boolean) : Result<List<TaskModel>>{
         val task = repository.taskWorkSpace("eq."+ id, "eq."+status)
         Log.d("INFO use case", task.toString())
         return task

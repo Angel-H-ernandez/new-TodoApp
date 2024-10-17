@@ -43,6 +43,11 @@ interface ApiClient {
         @Body task: TaskRequest
     ): List<TaskModel>
 
+    @GET("users")
+    suspend fun getIdGroupTaskDefault(
+        @Query("id") id: String
+    ): List<UserModel>
+
 
 }
 

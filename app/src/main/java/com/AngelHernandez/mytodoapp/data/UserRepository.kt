@@ -46,6 +46,21 @@ class UserRepository @Inject constructor(private val apiClient: ApiClient) {
             Result.failure(e)
         }
     }
+
+    suspend fun getIdGroupTaskDefault(id: String): Result<UserModel> {
+        return try {
+            Log.i("INFO", "Attempting sign in at REPOSITORY")
+            val user = apiClient.getIdGroupTaskDefault(id)
+            if (user.isNotEmpty()) {
+                Result.success(user.first()) // Obtener el primer usuario si hay usuarios
+            } else {
+                Result.failure(Exception("No users found"))
+            }
+        } catch (e: Exception) {
+            Log.e("INFO", "Sign in failed: ${e.message}")
+            Result.failure(e)
+        }
+    }
 }
 
 

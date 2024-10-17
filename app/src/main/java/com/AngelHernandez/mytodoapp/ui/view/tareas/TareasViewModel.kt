@@ -15,6 +15,7 @@ import com.AngelHernandez.mytodoapp.data.model.UserModel
 import com.AngelHernandez.mytodoapp.domain.CompletedTaskUseCase
 import com.AngelHernandez.mytodoapp.domain.GetTaskFromWorkSpace
 import com.AngelHernandez.mytodoapp.domain.AddTaskUseCase
+import com.AngelHernandez.mytodoapp.ui.view.dependencias.PreferencesManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,7 +26,8 @@ import javax.inject.Inject
 @HiltViewModel
 class TareasViewModel @Inject constructor(private val getTaskFromWorkSpace: GetTaskFromWorkSpace,
                                           private val addTaskUseCase: AddTaskUseCase,
-                                          private val completedTaskUseCase: CompletedTaskUseCase) : ViewModel() {
+                                          private val completedTaskUseCase: CompletedTaskUseCase,
+                                          private val preferencesManager: PreferencesManager) : ViewModel() {
 
     //estateflow es mas modernos que live data
     private val _taskResult = MutableStateFlow<List<TaskModel>>(emptyList())
@@ -39,12 +41,13 @@ class TareasViewModel @Inject constructor(private val getTaskFromWorkSpace: GetT
     val dialogEvent: StateFlow<DialogEvent?> = _dialogEvent
 
     init { //este metodo se llama acutomasticamente al llamar al viewmodel, como un oncreate de una vista
-        Log.d("INFO", "hola")
+
         viewModelScope.launch{ //corrutina
             //marcar que esta cargando
             _isLoading.value = true;
             try {
-                val result = getTaskFromWorkSpace(3, false) // mandar al caso de uso los datos
+                //POR DEFECTO OBTENER LAS TAREAS DEL GRUPO DEFAULT
+                val result = getTaskFromWorkSpace(preferencesManager.getIdGroupTaskDefault()!!, false) // mandar al caso de uso los datos
                 _taskResult.value = result.getOrNull()!!;
                 Log.i("INFO vieemodel", _taskResult.value.toString())
             }catch(e: Exception){
@@ -66,8 +69,10 @@ class TareasViewModel @Inject constructor(private val getTaskFromWorkSpace: GetT
             _isLoading.value = true
 
             try {
+                val idGroupTaskDefault =  preferencesManager.getIdGroupTaskDefault()!!
+                val idUser = preferencesManager.getId()!!
 
-                val result = addTaskUseCase(nombre)
+                val result = addTaskUseCase(nombre, idGroupTaskDefault.toInt(), idUser.toInt())
                 // _taskResult.value = result.getOrNull()!!
                 Log.i("INFO vieemodel", _taskResult.value.toString())
                 Log.i("INFO vieemodel tarea nueva", result.toString())

@@ -8,5 +8,6 @@ data class UserModel(
         val email: String,
         val password_hash: String,
         val created_at: String,
-        val isPro: Boolean
+        val isPro: Boolean,
+        val default_grouptask_id: Int
 )
